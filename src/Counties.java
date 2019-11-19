@@ -6,43 +6,87 @@ import java.util.Iterator;
 
 public class Counties {
 
-    /** Create a method
+    /**
+     * Create a method
      * method name should be smallestNumber  <-------   METHOD NAME SHOULD BE AS THIS
      * method should take a tree number(int) and return smallest number(int)
      * Write a Java method to find the smallest number among three numbers.
      */
+    public int smallestNumber(int a, int b, int c) {
 
 
-    /** Create a method
+        return Math.min(Math.min(a, b), c);
+    }
+
+    /**
+     * Create a method
      * method name is middleCharacter    <-------   METHOD NAME SHOULD BE AS THIS
      * this method should take a String as parameter and return char
      * Write a Java method to display the middle character of a string
      * if the string length is even number return 0
      */
+    public char middleCharater(String a) {
+        char[] arr = a.toCharArray();
+        char x = arr[arr.length / 2];
+        if (a.length() % 2 == 0) {
+            return '0';
+        } else
+            return x;
+    }
 
-
-    /** Create a method
+    /**
+     * Create a method
      * method name is dayOfTheWeek    <-------   METHOD NAME SHOULD BE AS THIS
      * this method return type is string parameter is number(int)
      * if the number is 1 return monday
      * if the number is 2 return tuesday
      * if the number bigger then 7 then return -->> this is not a expected input
      */
+    public String dayoftheWeek(int a) {
+        if (a == 1) {
+            return "Monday";
+        } else if (a == 2) {
+            return "Tuesday";
+        } else if (a == 3) {
+            return "Wednesday";
+        } else if (a == 4) {
+            return "Thursday";
+        } else if (a == 5) {
+            return "Friday";
+        } else if (a == 6) {
+            return "Saturday";
+        } else if (a == 7) {
+            return "Sunday";
+        } else if (a > 7) {
 
+
+        }
+        return "this is not a expected input";
+
+    }
 
     /**
      * if CountThis String in the myCounties ArrayList then return how many of CountThis string in the myCounties
-     * if CountThis is not in the myCountries then return -1
+     * * if CountThis is not in the myCountries then return -1
      */
     public int countCountry(ArrayList<String> myCountries, String CountThis) {
 
+        if (!myCountries.contains(CountThis)) {
+            return -1;
+        }
+
         int result = 0;
-        // START THE CODE FROM HERE
-
-
-        // CODE END HERE
+        for (String a : myCountries) {
+            if (a.equals(CountThis)) {
+                result++;
+            }
+        }
         return result;
     }
+
+
+    // CODE END HERE
+
 
     /**
      * sort the arrayList
@@ -51,7 +95,8 @@ public class Counties {
      */
     public ArrayList<String> sortArrayList(ArrayList<String> myCountries) {
 
-
+        ArrayList<String> sortArrayList = new ArrayList<String>();
+        Collections.sort(myCountries);
         return myCountries;
     }
 
@@ -62,10 +107,10 @@ public class Counties {
      */
     public ArrayList<String> reverseTheList(ArrayList<String> myCountries) {
         ArrayList<String> reverse = new ArrayList<>();
-//       start writing the code here
-
-
-//        ends here
+        Collections.reverse(myCountries);
+        for (String a : myCountries) {
+            reverse.add(a);
+        }
         return reverse;
     }
 
@@ -81,9 +126,17 @@ public class Counties {
      * return false
      */
     public boolean isFirstArrayListContainsSecondArrayList(ArrayList<String> firstArray, ArrayList<String> SecondAray) {
+        boolean x = false;
+        for (String y : firstArray) {
+            for (String z : SecondAray) {
+                if (y == z) {
+                    x = true;
+                } else
+                    x = false;
+            }
+        }
 
-
-        return false;
+        return x;
     }
 
     /**
@@ -94,9 +147,12 @@ public class Counties {
      * result should be Brazil Canada Mexico Canada
      */
     public ArrayList<String> replaceTheCountry(ArrayList<String> myCountries, String firstCountry, String SecondCounry) {
-
-
+        for (String x : myCountries) {
+            if (x.contains(firstCountry)) {
+                int a = myCountries.indexOf(firstCountry);
+                myCountries.set(a, SecondCounry);
+            }
+        }
         return myCountries;
     }
-
 }
